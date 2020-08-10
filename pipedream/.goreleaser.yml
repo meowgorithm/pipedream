@@ -1,0 +1,73 @@
+project_name: pipedream
+
+before:
+  hooks:
+    - go mod download
+
+builds:
+  - id: "pipedream"
+    binary: pipedream
+    ldflags: -s -w -X main.Version={{ .Version }}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+      - 386
+      - arm
+    goarm:
+      - 6
+      - 7
+  - id: "darwin"
+    binary: pipedream
+    ldflags: -s -w -X main.Version={{ .Version }}
+    goos:
+      - darwin
+    goarch:
+      - amd64
+
+
+archives:
+  - id: "default"
+    builds:
+      - pipedream
+    format_overrides:
+      - goos: windows
+        format: zip
+    replacements:
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+  - id: "darwin"
+    builds:
+      - darwin
+    replacements:
+      darwin: macOS
+      amd64: x86_64
+
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+brews:
+  - ids:
+    - darwin
+    tap:
+      owner: meowgorithm
+      name: homebrew-tap
+    commit_author:
+      name: "Christian Rocha"
+      email: "christian@rocha.is"
+    homepage: "https://github.com/meowgorithm/pipedream"
+    description: "A multipart uploader for S3 and S3-compatible services."
