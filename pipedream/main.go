@@ -111,7 +111,7 @@ func run(cmd *cobra.Command, args []string) error {
 		missing = append(missing, "path")
 	}
 	if len(missing) > 0 {
-		return errors.New(fmt.Sprintf("missing %s", pipedream.EnglishJoin(missing, true)))
+		return fmt.Errorf("missing %s", pipedream.EnglishJoin(missing, true))
 	}
 	log.Println(endpoint)
 	log.Println(region)

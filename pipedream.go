@@ -78,9 +78,17 @@ import (
 )
 
 const (
-	Kilobyte      int64 = 1024
-	Megabyte      int64 = Kilobyte * 1024
-	DefaultRegion       = "us-east-1"
+	// Kilobyte is a convenience measurement useful when setting upload part
+	// sizes.
+	Kilobyte int64 = 1024
+
+	// Megabyte is a convenience measurement useful when setting upload part
+	// sizes.
+	Megabyte int64 = Kilobyte * 1024
+
+	// DefaultRegion is the region to use as a default. This should be used for
+	// services that don't use regions, like DigitalOcean spaces.
+	DefaultRegion = "us-east-1"
 )
 
 // Event represents activity that occurred during the upload. Events are sent
@@ -130,10 +138,10 @@ func (e Error) Error() string {
 
 // Implement dummy methods to satisfy Event interface. We're doing this for
 // type safety.
-func (x Progress) event() {}
-func (x Retry) event()    {}
-func (x Complete) event() {}
-func (x Error) event()    {}
+func (p Progress) event() {}
+func (r Retry) event()    {}
+func (c Complete) event() {}
+func (e Error) event()    {}
 
 // MultipartUpload handles multipart uploads to S3 and S3-compatible systems.
 type MultipartUpload struct {
