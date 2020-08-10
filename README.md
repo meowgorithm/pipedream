@@ -12,24 +12,6 @@ services. Available as a CLI and Go library.
 
 ## CLI
 
-### Install It
-
-Download a build from the [releases][releases] page. macOS, Linux and Windows builds are available for various architectures.
-
-macOS users can also use Homebrew:
-
-```
-brew install meowgorithm/homebrew-tap/pipedream
-```
-
-Or you can just use `go get`:
-
-```bash
-go get github.com/meowgorithm/pipedream/pipedream
-```
-
-[releases]: https://github.com/meowgorithm/pipedream/releases
-
 ### Usage
 
 ```bash
@@ -48,6 +30,24 @@ cat /data/dump.rdb | gzip | pipedream -bucket backups -path dump-$(now).rdb.gz
 # For more info
 pipedream -h
 ```
+
+### Installation
+
+Download a build from the [releases][releases] page. macOS, Linux and Windows builds are available for various architectures.
+
+macOS users can also use Homebrew:
+
+```
+brew install meowgorithm/homebrew-tap/pipedream
+```
+
+Or you can just use `go get`:
+
+```bash
+go get github.com/meowgorithm/pipedream/pipedream
+```
+
+[releases]: https://github.com/meowgorithm/pipedream/releases
 
 ## Library
 
