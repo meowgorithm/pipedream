@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"strings"
 	"time"
@@ -113,8 +112,6 @@ func run(cmd *cobra.Command, args []string) error {
 	if len(missing) > 0 {
 		return fmt.Errorf("missing %s", pipedream.EnglishJoin(missing, true))
 	}
-	log.Println(endpoint)
-	log.Println(region)
 
 	// Is stdin a pipe?
 	info, err := os.Stdin.Stat()
