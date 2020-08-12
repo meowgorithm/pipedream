@@ -25,7 +25,7 @@ pipedream --bucket images --path pets/puppy.jpg < puppy.jpg
 
 # Get fancy
 export now=$(date +"%Y-%m-%d_%H:%M:%S_%Z")
-cat /data/dump.rdb | gzip | pipedream -bucket backups -path dump-$(now).rdb.gz
+cat /data/dump.rdb | gzip | pipedream -bucket backups -path dump-$now.rdb.gz
 
 # For more info
 pipedream -h
