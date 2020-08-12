@@ -38,7 +38,7 @@ Download a build from the [releases][releases] page. macOS, Linux and Windows bu
 macOS users can also use Homebrew:
 
 ```
-brew install meowgorithm/homebrew-tap/pipedream
+brew install meowgorithm/tap/pipedream
 ```
 
 Or you can just use `go get`:
