@@ -21,13 +21,19 @@ builds:
     goarm:
       - 6
       - 7
-  - id: "darwin"
+    hooks:
+      post:
+        - upx "{{ .Path }}"
+  - id: "pipedream-darwin"
     binary: pipedream
     ldflags: -s -w -X main.Version={{ .Version }}
     goos:
       - darwin
     goarch:
       - amd64
+    hooks:
+      post:
+       - upx "{{ .Path }}"
 
 
 archives:
