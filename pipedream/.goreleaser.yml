@@ -24,7 +24,7 @@ builds:
     hooks:
       post:
         - upx "{{ .Path }}"
-  - id: "pipedream-darwin"
+  - id: "darwin"
     binary: pipedream
     ldflags: -s -w -X main.Version={{ .Version }}
     goos:
