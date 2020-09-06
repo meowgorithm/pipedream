@@ -162,11 +162,13 @@ func run(cmd *cobra.Command, args []string) error {
 						fmt.Printf("%s Upload failed:\n\n%s\n\n", ex, errMsg)
 					}
 					close(done)
+					break
 				case pipedream.Complete:
 					if !silent {
 						fmt.Printf("%s Done. Sent %s in %s.\n", check, humanize.Bytes(uint64(e.Bytes)), time.Since(now).Round(time.Millisecond))
 					}
 					close(done)
+					break
 				}
 			}
 		}
