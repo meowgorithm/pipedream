@@ -25,7 +25,7 @@ pipedream --bucket images --path pets/puppy.jpg < puppy.jpg
 
 # Get fancy
 export now=$(date +"%Y-%m-%d_%H:%M:%S_%Z")
-cat /data/dump.rdb | gzip | pipedream -bucket backups -path dump-$now.rdb.gz
+cat /data/dump.rdb | gzip | pipedream --bucket backups --path dump-$now.rdb.gz
 
 # For more info
 pipedream -h
@@ -33,7 +33,8 @@ pipedream -h
 
 ### Installation
 
-Download a build from the [releases][releases] page. macOS, Linux and Windows builds are available for various architectures.
+Download a build from the [releases][releases] page. macOS, Linux and Windows
+builds are available for a variety of architectures.
 
 macOS users can also use Homebrew:
 
