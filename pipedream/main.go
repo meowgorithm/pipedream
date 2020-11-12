@@ -51,7 +51,7 @@ type config struct {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "INPUT | pipedream [flags]\n  pipedream [flags] < INPUT",
+	Use:   "pipedream [flags] < INPUT\n  INPUT | pipedream [flags]",
 	Short: "An S3 multipart uploader",
 	Long:  info(),
 	Args:  cobra.NoArgs,
