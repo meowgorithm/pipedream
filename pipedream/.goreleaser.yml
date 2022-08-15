@@ -12,7 +12,6 @@ builds:
       - CGO_ENABLED=0
     goos:
       - linux
-      - windows
     goarch:
       - amd64
       - arm64
@@ -29,7 +28,13 @@ builds:
     goos:
       - windows
     goarch:
+      - amd64
+      - arm64
+      - 386
       - arm
+    goarm:
+      - 6
+      - 7
   - id: "darwin"
     binary: pipedream
     ldflags: -s -w -X main.Version={{ .Version }}
