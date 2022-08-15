@@ -5,7 +5,7 @@ before:
     - go mod download
 
 builds:
-  - id: "pipedream"
+  - id: "general"
     binary: pipedream
     ldflags: -s -w -X main.Version={{ .Version }}
     env:
@@ -17,13 +17,19 @@ builds:
       - amd64
       - arm64
       - 386
-      - arm
     goarm:
       - 6
       - 7
     hooks:
       post:
         - upx "{{ .Path }}"
+  - id: "windows arm"
+    binary: pipedream
+    ldflags: -s -w -X main.Version={{ .Version }}
+    goos:
+      - windows
+    goarch:
+      - arm
   - id: "darwin"
     binary: pipedream
     ldflags: -s -w -X main.Version={{ .Version }}
@@ -31,6 +37,7 @@ builds:
       - darwin
     goarch:
       - amd64
+      - arm64
     hooks:
       post:
        - upx "{{ .Path }}"
