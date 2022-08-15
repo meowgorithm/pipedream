@@ -172,7 +172,6 @@ func (m *MultipartUpload) Send(reader io.Reader, path string) chan Event {
 }
 
 func (m *MultipartUpload) run(ch chan Event) {
-
 	// Set defaults
 	if m.MaxRetries == 0 {
 		m.MaxRetries = 3
@@ -285,7 +284,6 @@ func (m *MultipartUpload) run(ch chan Event) {
 		Bytes:  totalBytes,
 		Result: res,
 	}
-
 }
 
 // uploadPart performs the technical S3 stuff to upload one part of the
@@ -325,13 +323,11 @@ func (m MultipartUpload) uploadPart(ch chan Event, chunk []byte, partNum int) (*
 			tryNum++
 
 		} else {
-
 			// Success
 			return &s3.CompletedPart{
 				ETag:       res.ETag,
 				PartNumber: aws.Int64(int64(partNum)),
 			}, nil
-
 		}
 	}
 
