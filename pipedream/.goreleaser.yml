@@ -5,33 +5,18 @@ before:
     - go mod download
 
 builds:
-  - id: "general"
+  - id: "pipedream"
     binary: pipedream
     ldflags: -s -w -X main.Version={{ .Version }}
     env:
       - CGO_ENABLED=0
     goos:
       - linux
-    goarch:
-      - amd64
-      - arm64
-      - 386
-    goarm:
-      - 6
-      - 7
-    hooks:
-      post:
-        - upx "{{ .Path }}"
-  - id: "windows arm"
-    binary: pipedream
-    ldflags: -s -w -X main.Version={{ .Version }}
-    goos:
       - windows
     goarch:
       - amd64
       - arm64
       - 386
-      - arm
     goarm:
       - 6
       - 7
@@ -43,10 +28,6 @@ builds:
     goarch:
       - amd64
       - arm64
-    hooks:
-      post:
-       - upx "{{ .Path }}"
-
 
 archives:
   - id: "default"
